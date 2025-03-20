@@ -84,6 +84,44 @@ public class SeleniumOperations {
 		clickSubmit.click();
 		
 		
+WebDriver driver2 = new ChromeDriver();
+		
+		System.out.println("Driver info: " + driver2);
+		
+		sleep(2);
+	
+		// Load a webpage in chromium browser.
+		driver2.get("https://www.bunnings.com.au/register");
+		
+		// Find first input field which is firstname
+		WebElement firstName2 = driver2.findElement(By.id("firstName"));
+		System.out.println("Found element: " + firstName2);
+		// Send first name
+		firstName2.sendKeys("Andrei");
+		
+		WebElement lastName2 = driver2.findElement(By.id("lastName"));
+		System.out.println("Found element: " + lastName2);
+		// Send last name
+		lastName2.sendKeys("Angeles");
+		
+		WebElement email2 = driver2.findElement(By.id("uid"));
+		System.out.println("Found element: " + email2);
+		// Send last name
+		email2.sendKeys("andreiangeles738@gmail.com");
+		
+		
+		WebElement password2 = driver2.findElement(By.id("password"));
+		System.out.println("Found element: " + password2);
+		// Send last name
+		password2.sendKeys("test");
+
+		
+		WebElement clickSubmit2 = driver2.findElement(By.cssSelector("[data-locator='input_CreateAccount']"));
+		System.out.println("Found element: " + clickSubmit2);
+		// Click Submit
+		clickSubmit2.click();
+		
+		
 		// Sleep a while
 		sleep(10);
 		
