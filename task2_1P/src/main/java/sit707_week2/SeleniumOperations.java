@@ -26,7 +26,7 @@ public class SeleniumOperations {
 	
 	public static void officeworks_registration_page(String url) {
 		// Step 1: Locate chrome driver folder in the local drive.
-		System.setProperty("webdriver.chrome.driver", "/home/mahabib/java_lib/chromedriver-linux64/chromedriver");
+		System.setProperty("webdriver.chrome.driver", "C:/Users/andre/Downloads/chromedriver-win64/chromedriver-win64/chromedriver.exe");
 		
 		// Step 2: Use above chrome driver to open up a chromium browser.
 		System.out.println("Fire up chrome browser.");
@@ -37,7 +37,7 @@ public class SeleniumOperations {
 		sleep(2);
 	
 		// Load a webpage in chromium browser.
-		driver.get(url);
+		driver.get("https://www.officeworks.com.au/app/identity/create-account");
 		
 		/*
 		 * How to identify a HTML input field -
@@ -47,30 +47,45 @@ public class SeleniumOperations {
 		 */
 		
 		// Find first input field which is firstname
-		WebElement element = driver.findElement(By.id("firstname"));
-		System.out.println("Found element: " + element);
+		WebElement firstName = driver.findElement(By.id("firstname"));
+		System.out.println("Found element: " + firstName);
 		// Send first name
-		element.sendKeys("Ahsan");
+		firstName.sendKeys("Andrei");
 		
-		/*
-		 * Find following input fields and populate with values
-		 */
-		// Write code
+		WebElement lastName = driver.findElement(By.id("lastname"));
+		System.out.println("Found element: " + lastName);
+		// Send last name
+		lastName.sendKeys("Angeles");
+		
+		WebElement phNumber = driver.findElement(By.id("phoneNumber"));
+		System.out.println("Found element: " + phNumber);
+		// Send last name
+		phNumber.sendKeys("0452600971");
+		
+		WebElement email = driver.findElement(By.id("email"));
+		System.out.println("Found element: " + email);
+		// Send last name
+		email.sendKeys("andreiangeles738@gmail.com");
 		
 		
-		/*
-		 * Identify button 'Create account' and click to submit using Selenium API.
-		 */
-		// Write code
+		WebElement password = driver.findElement(By.id("password"));
+		System.out.println("Found element: " + password);
+		// Send last name
+		password.sendKeys("Testing123.Password");
 		
-		/*
-		 * Take screenshot using selenium API.
-		 */
-		// Write code
+		WebElement passworConfirm = driver.findElement(By.id("confirmPassword"));
+		System.out.println("Found element: " + passworConfirm);
+		// Send last name
+		passworConfirm.sendKeys("123testing");
+		
+		WebElement clickSubmit = driver.findElement(By.cssSelector("[data-testid='account-action-btn']"));
+		System.out.println("Found element: " + clickSubmit);
+		// Click Submit
+		clickSubmit.click();
 		
 		
 		// Sleep a while
-		sleep(2);
+		sleep(10);
 		
 		// close chrome driver
 		driver.close();	
