@@ -83,7 +83,14 @@ public class SeleniumOperations {
 		// Click Submit
 		clickSubmit.click();
 		
+		sleep(10);
 		
+		// close chrome driver
+		driver.close();	
+	}
+	
+	public static void bunnings_registration_page(String url) 
+	{
 WebDriver driver2 = new ChromeDriver();
 		
 		System.out.println("Driver info: " + driver2);
@@ -126,8 +133,6 @@ WebDriver driver2 = new ChromeDriver();
 		sleep(10);
 		
 		// close chrome driver
-		driver.close();	
+		driver2.close();	
 	}
-	
-	
 }
