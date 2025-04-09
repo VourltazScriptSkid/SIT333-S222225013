@@ -5,8 +5,8 @@ package sit707_week4;
  * @author Ahsan Habib
  */
 public class LoginForm {
-	private static String USERNAME = "ahsan";
-	private static String PASSWORD = "ahsan_pass";
+	private static String USERNAME = "andrei";
+	private static String PASSWORD = "andrei_pass";
 	private static String VALIDATION_CODE = "123456";
 
 	public static LoginStatus login(String username, String password) {

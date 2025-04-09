@@ -12,13 +12,13 @@ public class LoginFormTest
 
 	@Test
 	public void testStudentIdentity() {
-		String studentId = null;
+		String studentId = "S222225013";
 		Assert.assertNotNull("Student ID is null", studentId);
 	}
 
 	@Test
 	public void testStudentName() {
-		String studentName = null;
+		String studentName = "Andrei";
 		Assert.assertNotNull("Student name is null", studentName);
 	}
 	
@@ -32,4 +32,66 @@ public class LoginFormTest
 	/*
 	 * Write more test functions below.
 	 */
+	
+	@Test
+	public void testEmptyUsernameWrongPassword() {
+	    LoginStatus status = LoginForm.login(null, "wrong");
+	    Assert.assertFalse(status.isLoginSuccess());
+	    Assert.assertEquals("Empty Username", status.getErrorMsg());
+	}
+
+	@Test
+	public void testWrongUsernameWrongPassword() {
+	    LoginStatus status = LoginForm.login("wrong", "wrong");
+	    Assert.assertFalse(status.isLoginSuccess());
+	    Assert.assertEquals("Credential mismatch", status.getErrorMsg());
+	}
+
+	@Test
+	public void testCorrectUsernameEmptyPassword() {
+	    LoginStatus status = LoginForm.login("andrei", null);
+	    Assert.assertFalse(status.isLoginSuccess());
+	    Assert.assertEquals("Empty Password", status.getErrorMsg());
+	}
+
+	@Test
+	public void testCorrectUsernameWrongPassword() {
+	    LoginStatus status = LoginForm.login("andrei", "wrong");
+	    Assert.assertFalse(status.isLoginSuccess());
+	    Assert.assertEquals("Credential mismatch", status.getErrorMsg());
+	}
+
+	@Test
+	public void testEmptyUsernameCorrectPassword() {
+	    LoginStatus status = LoginForm.login(null, "andrei_pass");
+	    Assert.assertFalse(status.isLoginSuccess());
+	    Assert.assertEquals("Empty Username", status.getErrorMsg());
+	}
+
+	@Test
+	public void testWrongUsernameCorrectPassword() {
+	    LoginStatus status = LoginForm.login("wrong", "andrei_pass");
+	    Assert.assertFalse(status.isLoginSuccess());
+	    Assert.assertEquals("Credential mismatch", status.getErrorMsg());
+	}
+
+	@Test
+	public void testCorrectCredentialsWrongValidationCode() {
+	    LoginStatus status = LoginForm.login("andrei", "andrei_pass");
+	    Assert.assertTrue(status.isLoginSuccess());
+
+	    boolean codeValid = LoginForm.validateCode("wrongcode");
+	    Assert.assertFalse(codeValid);
+	}
+
+	@Test
+	public void testCorrectCredentialsCorrectValidationCode() {
+	    LoginStatus status = LoginForm.login("andrei", "andrei_pass");
+	    Assert.assertTrue(status.isLoginSuccess());
+
+	    boolean codeValid = LoginForm.validateCode("123456");
+	    Assert.assertTrue(codeValid);
+	}
+
+	
 }
