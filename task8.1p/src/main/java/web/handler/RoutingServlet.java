@@ -127,5 +127,25 @@ public class RoutingServlet {
 	public String q3View() {		
 		System.out.println("q3 view...");
 		return "view-q3";
-	}		
+	}	
+	
+	@PostMapping("/q3")
+	public RedirectView q3(HttpServletRequest request, RedirectAttributes redirectAttributes) {
+	    String number1 = request.getParameter("number1");
+	    String number2 = request.getParameter("number2");
+	    String resultUser = request.getParameter("result");
+
+	    Double calculatedResult = MathQuestionService.q3Multiplication(number1, number2);
+	    RedirectView redirectView;
+
+	    if (calculatedResult != null && calculatedResult.equals(Double.valueOf(resultUser))) {
+	        redirectView = new RedirectView("/success", true); 
+	    } else {
+	        redirectAttributes.addFlashAttribute("message", "Wrong answer, try again.");
+	        redirectView = new RedirectView("/q3", true);
+	    }
+
+	    return redirectView;
+	}
+
 }
