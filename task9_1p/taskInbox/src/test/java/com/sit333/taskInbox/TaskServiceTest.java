@@ -26,7 +26,7 @@ public class TaskServiceTest {
     @Test
     public void testGetTaskInbox_S222225013() {
         TaskService service = new TaskService();
-        List<Task> tasks = service.getTaskInbox("S2222250", getSampleTasks());
+        List<Task> tasks = service.getTaskInbox("S222225013", getSampleTasks());
 
         assertEquals(3, tasks.size());
         assertEquals("Task 1", tasks.get(0).getTitle());
@@ -36,7 +36,7 @@ public class TaskServiceTest {
     @Test
     public void testGetTaskInbox_S123456() {
         TaskService service = new TaskService();
-        List<Task> tasks = service.getTaskInbox("S1236", getSampleTasks());
+        List<Task> tasks = service.getTaskInbox("S123456", getSampleTasks());
 
         assertEquals(3, tasks.size());
         assertEquals("Task A", tasks.get(0).getTitle());
